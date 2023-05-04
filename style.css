@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 * {
   margin: 0px;
   padding: 0px;
@@ -9,6 +10,7 @@ ul,
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
 }
@@ -29,12 +31,14 @@ a {
   z-index: 10;
   /* box-shadow: ; */
 }
+
 .popup h1 {
   font: bold 27px/1 "arial";
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
+
 .popup p {
   font: normal 18px/1.5 "arial";
   color: #333;
@@ -48,7 +52,7 @@ a {
   right: 20px;
   border: none;
   outline: none;
-  /* border none */
+  /* border none설명 후에 */
   background-color: #333;
   padding: 5px 10px;
   color: #eee;
@@ -58,36 +62,35 @@ a {
 header {
   width: 100%;
 }
+
 header .inner {
   width: 1200px;
   height: 100px;
   margin: 0 auto;
-  background-color: #eee;
+  background-color: #fff;
   position: relative;
 }
+
 header .inner h1 {
   position: absolute;
   top: 50%;
   left: 50px;
   transform: translateY(-50%);
 }
+
 #gnb {
   position: absolute;
-  top: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 30px;
-  background-color: #eee;
+  background-color: #fff;
+  z-index: 10;
 }
-
-/* #gnb::after {
-  content: "";
-  display: block;
-  clear: both;
-} */
 
 #gnb > li {
   float: left;
   position: relative;
-  font: bold 14px/60px "arial";
+  line-height: 60px;
   text-align: center;
 }
 
@@ -95,63 +98,63 @@ header .inner h1 {
   display: block;
   width: 150px;
   height: 60px;
+  font: bold 25px/60px "arial";
   color: #333;
-  line-height: 60px;
 }
 
 #gnb > li > a:hover {
   background-color: #333;
   color: #fff;
 }
+
 #gnb > li > a.on {
   background-color: #333;
   color: #fff;
 }
+
 .sub {
   position: absolute;
   top: 60px;
-  right: 0;
+  left: 0;
   display: none;
 }
+
 .sub > li > a {
   display: block;
   width: 150px;
-  /* 100%로 하면 글자 크기 만큼의 영역을 가지게 되므로 너비를 설정해준다 */
-  height: 60px;
+  /* 100%로하면 글자크기만큼만의 영역을 가집니다
+    px로 주세요 */
+  height: 50px;
+  font-size: 16px;
   background-color: #555;
+  text-align: center;
   color: #888;
 }
 
 .sub > li > a:hover {
   color: #333;
-  background-color: #fff;
+  background-color: #f8f8f8;
 }
 
 /* slider */
 #slide {
-  position: relative;
-  width: 100%;
-}
-#slide .frame {
   width: 1200px;
   height: 300px;
   margin: 0 auto;
   overflow: hidden;
 }
-#slide .frame li {
-  display: none;
-  bottom: 0;
-  left: 0;
-}
 
-#slide .frame li.on {
-  display: block;
+#slide .frame {
+  height: 900px;
+  position: relative;
+  /* 제이쿼리 이후 설명 */
 }
 
 /* contentBox */
 #contentBox {
   width: 100%;
 }
+
 #contentBox .inner {
   width: 1200px;
   height: 200px;
@@ -160,87 +163,109 @@ header .inner h1 {
   justify-content: space-between;
   align-items: center;
 }
+
 .NGboard {
-  flex: 1;
+  flex: 1.5;
+  height: 200px;
+  overflow: hidden;
 }
+
 .NGboard .tab {
-  flex: 1;
   display: flex;
   width: 100%;
-  margin-top: 5px;
-  border-bottom: 1px solid #333;
+  height: 50px;
 }
+
 .NGboard .tab li {
-  width: 20%;
-  margin-left: 5px;
+  width: 100px;
   background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.NGboard .tab li:last-child {
-  margin-left: 0;
-}
+
 .NGboard .tab li a {
-  display: block;
-  padding: 10px;
-  font-size: 14px;
-  color: #f8f8f8;
-  font-weight: bold;
-  border: 1px solid #333;
-  border-bottom: none;
+  font: bold 15px/1 "arial";
+  color: #fff;
 }
-.NGboard .tab li:nth-of-type(1) a {
-  border-right: none;
-}
+
 .NGboard .tab li.on {
   background-color: #fff;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -4px;
-  /* jquery 이후 설명 추가 */
 }
+
 .NGboard .tab li.on a {
   color: #333;
 }
-.NGboard .tab .content {
+
+.content {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+
+.content div {
   width: 100%;
   height: 100%;
-  /* calc 사용해서 정확한 높이 지정필요 */
-}
-#notice {
-  width: 100%;
-  height: 100%;
-}
-#notice > ul {
-  margin: 0 auto;
-  width: 100%;
-  padding: 8px;
-}
-#notice > ul > li {
-  display: flex;
-  padding: 5px 0;
-  margin-bottom: 2px;
-  cursor: pointer;
-  justify-content: space-between;
-}
-#notice > ul > li:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-#gallery {
-  height: 100%;
-  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  opacity: 0;
+  z-index: 1;
 }
+
+.content div.on {
+  opacity: 1;
+  z-index: 2;
+}
+
+#notice {
+  justify-content: flex-start;
+}
+
+#notice ul {
+  width: 100%;
+}
+
+#notice ul li {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  cursor: pointer;
+}
+
+#notice ul li a {
+  font: 13px/30px "맑은 고딕";
+  color: #333;
+  margin-left: 10px;
+}
+
+#notice ul li span {
+  font: 10px/30px "arial";
+  margin-right: 30px;
+}
+
+#notice ul li:hover {
+  background-color: #eee;
+}
+
+/* banner */
 .banner {
   flex: 1;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.banner .img {
+
+.banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .baro {
   flex: 1;
   width: 100%;
@@ -249,11 +274,52 @@ header .inner h1 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 5px;
 }
 
-.baro div {
+.baro a {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
-.baro div span {
+
+.baro a span {
   font-size: 10px;
+  text-align: center;
+}
+
+/* footer */
+footer {
+  width: 100%;
+}
+
+footer .inner {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .inner .logo {
+  display: flex;
+  justify-content: center;
+  flex: 1.5;
+}
+
+footer .inner .copyright {
+  flex: 3;
+  text-align: center;
+}
+
+footer .inner .copyright span {
+  font: bold 12px/1 "arial";
+  color: #333;
+}
+
+footer .inner .sns {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
